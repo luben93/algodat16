@@ -22,8 +22,12 @@ public class main {
         System.out.println("shell ");
         Arrays.asList(new Shell<Integer>(Arrays.copyOf(arr, arr.length)).sort()).forEach(System.out::println);
 
-        System.out.println("unsorted");
-        Arrays.asList(arr).forEach(System.out::println);
+        System.out.println("merge ");
+        Arrays.asList(new merge<Integer>(Arrays.copyOf(arr, arr.length)).sort()).forEach(System.out::println);
+
+        System.out.println("heap ");
+        Arrays.asList(new heapsort<Integer>(Arrays.copyOf(arr, arr.length)).sort()).forEach(System.out::println);
+
 
     }
 }

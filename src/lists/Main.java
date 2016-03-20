@@ -75,6 +75,23 @@ public class Main {
         bst.delete("hej4");
         System.out.println(bst.toString());
 
+        heap<String> heap =new heap<>(100);
+        System.out.println("alive");
+        heap.add("string");
+        heap.add("hej");
+        heap.add("hej4");
+        heap.add("hej5");
+        heap.add("hej3");
+        heap.add("hej6");
+        heap.add("hej7");
+        heap.add("hej1");
+        heap.add("hej2");
+        heap.add("yoyo");
+        System.out.println("added all");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(heap.remove());
+        }
+
     }
 
 }
