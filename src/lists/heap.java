@@ -18,12 +18,17 @@ public class heap<E extends Comparable<E>> {
             i++;
         }
         arr[i] = element;
-        while (i < 0) {
+//        System.out.println("addi "+i+" ");
+
+        while (i > 0) {
+//            System.out.printf(i+" ");
             if (arr[(i - 1) / 2].compareTo(arr[i]) < 0) {
                 E tmp = arr[(i - 1) / 2];
                 arr[(i - 1) / 2] = arr[i];
                 arr[i] = tmp;
                 i = (i - 1) / 2;
+            }else {
+                break;
             }
         }
     }
@@ -42,13 +47,13 @@ public class heap<E extends Comparable<E>> {
         while (n + n + 1 < heapsize ){ //&& arr[n].compareTo(arr[n * n + 1]) < 0&& arr[n].compareTo(arr[n * n + 1 + 1]) < 0) {
             int l = n + n + 1, r = l + 1;
             if (r >= heapsize) {
-                if (arr[l].compareTo(arr[n]) < 0) {//one child
+                if (arr[l].compareTo(arr[n]) > 0) {//one child
                     arraySwap(l, n);
                 }
                 break;
             }
-            if (arr[l].compareTo(arr[n]) < 0) {//check left and right
-                if (arr[l].compareTo(arr[r]) < 0) {//left
+            if (arr[l].compareTo(arr[n]) > 0) {//check left and right
+                if (arr[l].compareTo(arr[r]) > 0) {//left
                     arraySwap(l, n);
                     n = l;
                 } else {
@@ -56,7 +61,7 @@ public class heap<E extends Comparable<E>> {
                     n = r;
                 }
             } else {
-                if (arr[r].compareTo(arr[n]) < 0) {//right only
+                if (arr[r].compareTo(arr[n]) > 0) {//right only
                     arraySwap(r, n);
                     n = r;
                 }else {
@@ -65,6 +70,7 @@ public class heap<E extends Comparable<E>> {
             }
 
         }
+        System.out.println("n " + n + " size " + heapsize);
 
         return out;
     }

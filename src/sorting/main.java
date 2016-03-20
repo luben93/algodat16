@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class main {
     public static void main(String[] args) {
-        Integer[] arr = {3, 5, 8, 2, 7, 92, 5, 81, 52, 62, 72, 13, 53, 21, 1};
+        Integer[] arr = {3,5, 8, 2, 7, 92, 5, 81, 52, 62, 72, 13, 53, 21, 1};
 
 
         System.out.println("insert ");
