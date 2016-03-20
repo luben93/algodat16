@@ -29,17 +29,18 @@ public class heap<E extends Comparable<E>> {
     }
 
     public E remove() {
-        E out = arr[0];
+        int n = 0;
+        E out = arr[n];
         int heapsize = arr.length - 1;
-        while (arr[heapsize] == null && heapsize > 0) {
+        while (arr[heapsize] == null && heapsize > n) {
             heapsize--;
         }
-        arr[0] = arr[heapsize];
+
+        arr[n] = arr[heapsize];
         arr[heapsize] = null;
 
-        int n = 0;
-        while (n * n + 1 < heapsize ){ //&& arr[n].compareTo(arr[n * n + 1]) < 0&& arr[n].compareTo(arr[n * n + 1 + 1]) < 0) {
-            int l = n * n + 1, r = n * n + 1 + 1;
+        while (n + n + 1 < heapsize ){ //&& arr[n].compareTo(arr[n * n + 1]) < 0&& arr[n].compareTo(arr[n * n + 1 + 1]) < 0) {
+            int l = n + n + 1, r = l + 1;
             if (r >= heapsize) {
                 if (arr[l].compareTo(arr[n]) < 0) {//one child
                     arraySwap(l, n);
@@ -67,6 +68,7 @@ public class heap<E extends Comparable<E>> {
 
         return out;
     }
+
 
     private void arraySwap(int a, int b) {
         E tmp = arr[b];
