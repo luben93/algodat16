@@ -13,12 +13,11 @@ import static org.testng.Assert.assertEquals;
  */
 public class unitTest {
     @Test
-    public void testName() throws Exception {
+    public void sorting() throws Exception {
         Integer[] arr = new Integer[(int)1E4];//{3, 5, 8, 2, 7, 92, 5, 81, 52, 62, 72, 13, 53, 21, 1};
         for (int i = 0; i < arr.length; i++) {
             arr[i]= new Random().nextInt(arr.length);
         }
-
 
 
         Integer[] sorted = Arrays.copyOf(arr, arr.length);
@@ -26,19 +25,26 @@ public class unitTest {
         List<sort<Integer>> sorters = new ArrayList<>();
 
 
-        sorters.add(new insert<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new Selection<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new bubblesort<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new Shell<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new merge<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new heapsort<Integer>(Arrays.copyOf(arr, arr.length)));
-        sorters.add(new quicksort<Integer>(Arrays.copyOf(arr, arr.length)));
+        sorters.add(new insert());
+        sorters.add(new Selection());
+        sorters.add(new bubblesort());
+        sorters.add(new Shell());
+        sorters.add(new merge());
+        sorters.add(new heapsort<Integer>());
+        sorters.add(new quicksort());
 
         for (sort<Integer> s : sorters) {
-            System.out.printf(s.toString());
-            long time=System.nanoTime();
-            assertEquals(sorted,s.sort());
-            System.out.println(" ok, time: "+(System.nanoTime()-time)/100000+"ms");
+            s.sort(Arrays.copyOf(arr, arr.length));
+            System.out.println(s.toString());
+            long tot=0;
+            for (int i = 0; i < 5; i++) {
+                long time=System.nanoTime();
+                assertEquals(sorted,s.sort(Arrays.copyOf(arr, arr.length)));
+//                System.out.println(" ok, time: "+/1000000+"ms");
+                tot+=(System.nanoTime()-time);
+            }
+            System.out.println("time: "+tot/5+"ns");
+
         }
 
     }

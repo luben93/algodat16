@@ -5,32 +5,27 @@ import java.util.Arrays;
 /**
  * Created by luben on 2016-03-19.
  */
-public class merge<E extends Comparable<E>> implements sort {
-    private E[] arr;
-
-    public merge(E[] arr) {
-        this.arr = arr;
-    }
+public class merge implements sort {
 
     @Override
-    public E[] sort() {
+    public Comparable[] sort(Comparable[] arr) {
         mergeSort(arr);
         return arr;
     }
 
-    private void mergeSort(E[] a) {
+    private void mergeSort(Comparable[] a) {
         if (a.length == 1) {
             return;
         }
-        E[] b = Arrays.copyOf(a,( a.length / 2));
-        E[] c = Arrays.copyOfRange(a, (a.length / 2) , a.length);
+        Comparable[] b = Arrays.copyOf(a,( a.length / 2));
+        Comparable[] c = Arrays.copyOfRange(a, (a.length / 2) , a.length);
         mergeSort(b);
         mergeSort(c);
         merge(b, c, a);
         return;
     }
 
-    private void merge(E[] a, E[] b, E[] c) {
+    private void merge(Comparable[] a, Comparable[] b, Comparable[] c) {
         int indexa = 0, indexb = 0, indexc = 0;
         while (indexa < a.length && indexb < b.length) {
             if (a[indexa].compareTo(b[indexb]) <= 0) {

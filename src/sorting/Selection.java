@@ -3,14 +3,9 @@ package sorting;
 /**
  * Created by luben on 2016-03-19.
  */
-public class Selection<E extends Comparable<E>> implements sort{
-    private E[] arr;
+public class Selection implements sort{
 
-    public Selection(E[] arr) {
-        this.arr = arr;
-    }
-
-    public E[] sort() {
+    public Comparable[] sort(Comparable[] arr) {
         for (int index = 0; index < arr.length - 1; index++) {
             int min = index;
             for (int i = index + 1; i < arr.length; i++) {
@@ -19,7 +14,7 @@ public class Selection<E extends Comparable<E>> implements sort{
                 }
 
             }
-            E tmp = arr[index];
+            Comparable tmp = arr[index];
             arr[index] = arr[min];
             arr[min] = tmp;
         }
