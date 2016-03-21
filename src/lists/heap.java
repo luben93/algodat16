@@ -70,7 +70,7 @@ public class heap<E extends Comparable<E>> {
             }
 
         }
-        System.out.println("n " + n + " size " + heapsize);
+//        System.out.println("n " + n + " size " + heapsize);
 
         return out;
     }

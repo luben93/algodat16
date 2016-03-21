@@ -22,14 +22,15 @@ public class heapsort<E extends Comparable<E>> implements sort {
             //add(i);
             myHeap.add(arr[i]);
         }
-        //for (int i = arr.length; i > 0; ) {
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = arr.length; i > 0; ) {
+//        for (int i = 0; i < arr.length; i++) {
             //arraySwap(0, --i);
             //remove(0, i);
-            arr[i]=myHeap.remove();
+            arr[--i]=myHeap.remove();
         }
         return arr;
     }
+
 
     private void add(int i) {
         if (i < 0) {
