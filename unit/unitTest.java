@@ -12,11 +12,15 @@ import static org.testng.Assert.assertEquals;
  * Created by luben on 2016-03-21.
  */
 public class unitTest {
+
+
     @Test
     public void sorting() throws Exception {
-        Integer[] arr = new Integer[(int)1E4];//{3, 5, 8, 2, 7, 92, 5, 81, 52, 62, 72, 13, 53, 21, 1};
+        int size = (int) 1E4;
+        int tries = 5;
+        Integer[] arr = new Integer[size];//{3, 5, 8, 2, 7, 92, 5, 81, 52, 62, 72, 13, 53, 21, 1};
         for (int i = 0; i < arr.length; i++) {
-            arr[i]= new Random().nextInt(arr.length);
+            arr[i] = new Random().nextInt(arr.length);
         }
 
 
@@ -35,17 +39,27 @@ public class unitTest {
 
         for (sort<Integer> s : sorters) {
             s.sort(Arrays.copyOf(arr, arr.length));
-            System.out.println(s.toString());
-            long tot=0;
-            for (int i = 0; i < 5; i++) {
-                long time=System.nanoTime();
-                assertEquals(sorted,s.sort(Arrays.copyOf(arr, arr.length)));
-//                System.out.println(" ok, time: "+/1000000+"ms");
-                tot+=(System.nanoTime()-time);
+            System.out.printf(s.toString());
+            long tot = 0;
+            for (int i = 0; i < tries; i++) {
+                long time = System.nanoTime();
+                assertEquals(sorted, s.sort(Arrays.copyOf(arr, arr.length)));
+                tot += (System.nanoTime() - time);
             }
-            System.out.println("time: "+tot/5+"ns");
+            System.out.println(" ok,\tAvg time: " + tot / (tries + 1000000) + "ms");
 
         }
+        radixsort r = new radixsort();
+        r.sort( Arrays.copyOf(Arrays.asList(arr).stream().mapToInt(Integer::intValue).toArray(), arr.length));
+        System.out.printf(r.toString());
+        long tot = 0;
+        for (int i = 0; i < tries; i++) {
+            long time = System.nanoTime();
+            assertEquals(sorted, r.sort(Arrays.copyOf(Arrays.asList(arr).stream().mapToInt(Integer::intValue).toArray(), arr.length)));
+            tot += (System.nanoTime() - time);
+        }
+        System.out.println(" ok,\tAvg time: " + tot / (tries + 1000000) + "ms");
+
 
     }
 }

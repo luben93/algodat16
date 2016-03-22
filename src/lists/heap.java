@@ -6,13 +6,11 @@ package lists;
 public class heap<E extends Comparable<E>> {
     public heap(int size) {
         arr = (E[]) new Comparable[size];
-
-
     }
 
-    private Comparable[] arr;
+    private E[] arr;
 
-    public void add(Comparable element) {
+    public void add(E element) {
         int i = 0;
         while (arr[i] != null) {
             i++;
@@ -23,7 +21,7 @@ public class heap<E extends Comparable<E>> {
         while (i > 0) {
 //            System.out.printf(i+" ");
             if (arr[(i - 1) / 2].compareTo(arr[i]) < 0) {
-                Comparable tmp = arr[(i - 1) / 2];
+                E tmp = arr[(i - 1) / 2];
                 arr[(i - 1) / 2] = arr[i];
                 arr[i] = tmp;
                 i = (i - 1) / 2;
@@ -35,7 +33,7 @@ public class heap<E extends Comparable<E>> {
 
     public Comparable remove() {
         int n = 0;
-        Comparable out = arr[n];
+        E out = arr[n];
         int heapsize = arr.length - 1;
         while (arr[heapsize] == null && heapsize > n) {
             heapsize--;
@@ -77,7 +75,7 @@ public class heap<E extends Comparable<E>> {
 
 
     private void arraySwap(int a, int b) {
-        Comparable tmp = arr[b];
+        E tmp = arr[b];
         arr[b] = arr[a];
         arr[a] = tmp;
     }

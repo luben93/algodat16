@@ -12,7 +12,7 @@ public class heapsort<E extends Comparable<E>> implements sort {
         heap<E> myHeap=new heap<>(arr.length);
         for (int i = 0; i < arr.length; i++) {
 //            add(i);
-            myHeap.add(arr[i]);
+            myHeap.add((E)arr[i]);
         }
         for (int i = arr.length; i > 0; ) {
 //            arraySwap(0, --i);
