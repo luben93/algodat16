@@ -1,6 +1,4 @@
-package problem;
-
-import java.util.*;
+package greedy;
 
 /**
  * Created by luben on 3/23/16.

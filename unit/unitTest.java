@@ -1,21 +1,23 @@
 import org.testng.annotations.Test;
 import sorting.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import static org.testng.Assert.assertEquals;
-import problem.coinChange;
+import greedy.coinChange;
 /**
  * Created by luben on 2016-03-21.
  */
 public class unitTest {
 
+
+
+
     @Test
-    public void problems(){
+    public void coin(){
         Integer[] fourtwentyone={0,2,0,0,1,0,0,1};
         Integer[] sftf={12,2,0,0,1,1,1,0};
 
